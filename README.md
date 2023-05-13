@@ -3,3 +3,7 @@
 ## Usage
 
 See `/examples`
+
+## Testing
+
+Just run poor man's CI, `test/test.sh`.

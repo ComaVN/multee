@@ -29,6 +29,15 @@ func Test_multeeReader_NewReader(t *testing.T) {
 	assert.Equal(t, 0, r.bufOffset)
 }
 
+func Test_multeeReader_read_impossible_offset(t *testing.T) {
+	mr := NewMulteeReader(strings.NewReader("foo"))
+	r := mr.NewReader()
+	defer r.Close()
+	assert.Panics(t, func() {
+		mr.read(make([]byte, 3), 1)
+	})
+}
+
 func Test_reader_Read(t *testing.T) {
 	t.Run("Single_reader_empty_input", func(t *testing.T) {
 		ir := strings.NewReader("")
@@ -147,9 +156,21 @@ func Test_reader_Read(t *testing.T) {
 	})
 }
 
+func Test_reader_Close(t *testing.T) {
+	t.Run("Closing_twice", func(t *testing.T) {
+		mr := NewMulteeReader(strings.NewReader("foo"))
+		r := mr.NewReader()
+		err := r.Close()
+		if assert.NoError(t, err) {
+			err = r.Close()
+			assert.ErrorIs(t, err, ErrClosed)
+		}
+	})
+}
+
 func Test_reader_monkeytest(t *testing.T) {
 	for rndSeed := int64(0); rndSeed < 10; rndSeed++ { // Run the test with 10 different, predictable seeds.
-		t.Run(fmt.Sprintf("Monkey test with rnd seed %d", rndSeed), func(t *testing.T) {
+		t.Run(fmt.Sprintf("Monkey_test_with_rnd_seed_%d", rndSeed), func(t *testing.T) {
 			rnd := rand.New(rand.NewSource(rndSeed))
 			inputR, inputW := io.Pipe()
 			stopW := make(chan struct{}) // Closing this stops the writer

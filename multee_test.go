@@ -173,23 +173,17 @@ func Test_reader_monkeytest(t *testing.T) {
 		t.Run(fmt.Sprintf("Monkey_test_with_rnd_seed_%d", rndSeed), func(t *testing.T) {
 			rnd := rand.New(rand.NewSource(rndSeed))
 			inputR, inputW := io.Pipe()
-			stopW := make(chan struct{}) // Closing this stops the writer
 			go func(rndSeed int64) {
 				// Generate an infinite stream of bytes, each 8 bytes containing their 64-bit offset in the stream.
 				buf := make([]byte, 8)
 				offs := uint64(0)
 				for {
-					select {
-					case <-stopW:
-						return
-					default:
-						binary.LittleEndian.PutUint64(buf, offs)
-						l, err := inputW.Write(buf)
-						if l != len(buf) || err != nil {
-							panic(fmt.Errorf("rnd seed %d: failed to write the full uint64 (%d, only %d bytes written, err: %v)", rndSeed, offs, l, err))
-						}
-						offs += uint64(l)
+					binary.LittleEndian.PutUint64(buf, offs)
+					l, err := inputW.Write(buf)
+					if l != len(buf) || err != nil {
+						panic(fmt.Errorf("rnd seed %d: failed to write the full uint64 (%d, only %d bytes written, err: %v)", rndSeed, offs, l, err))
 					}
+					offs += uint64(l)
 				}
 			}(rndSeed)
 			mr := NewMulteeReader(inputR)
@@ -230,7 +224,6 @@ func Test_reader_monkeytest(t *testing.T) {
 				}(r, rndSeed, rdrIdx)
 			}
 			wg.Wait()
-			close(stopW)
 		})
 	}
 }

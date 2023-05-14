@@ -52,8 +52,9 @@ func (mr *multeeReader) NewReader() *reader {
 func (mr *multeeReader) read(p []byte, bufOffset int) (int, int, error) {
 	if bufOffset == mr.bufEndPos {
 		// The current buffer is empty, or has been fully read by the calling reader.
+		once := mr.bufReadOnce // This needs to be first, to prevent a race condition when the new "once" is created.
 		mr.bufReadWaitGroup.Done()
-		mr.bufReadOnce.Do(func() {
+		once.Do(func() {
 			// Let the first reader to get here wait for the other readers, and buffer the next input block.
 			// This means no-one else is accessing mr.buf, mr.bufEndPos, mr.inputReader or mr.err.
 			// This is concurrency-safe as long as no readers are added while waiting here.

@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	multee "github.com/ComaVN/multee/alt/byteslice"
+	multee "github.com/ComaVN/multee/alt/byteslicechan"
 )
 
 func main() {

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Changed license from BEER-WARE to MIT, because pkg.go.dev does not recognize it.
+
 ## [0.0.1] - 2024-11-09
 
 ### Added

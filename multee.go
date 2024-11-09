@@ -1,5 +1,5 @@
 // Copyright 2023 Roel Harbers.
-// Use of this source code is governed by the BEER-WARE license
+// Use of this source code is governed by the MIT license
 // that can be found in the LICENSE file.
 
 // Implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times,

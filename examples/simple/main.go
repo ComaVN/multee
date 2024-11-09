@@ -1,5 +1,5 @@
 // Copyright 2023 Roel Harbers.
-// Use of this source code is governed by the BEER-WARE license
+// Use of this source code is governed by the MIT license
 // that can be found in the LICENSE file.
 
 // Example code for how to use the multee package.

@@ -8,7 +8,7 @@ lint:
 
 # TODO: Poor man's automated testing, replace this with some proper CI
 .PHONY: test
-test: unit-test integration-test
+test: unit-test integration-test compat-test
 	@echo "All tests Ok"
 
 .PHONY: unit-test
@@ -18,6 +18,10 @@ unit-test:
 .PHONY: integration-test
 integration-test:
 	test/example-test.sh
+
+.PHONY: compat-test
+compat-test:
+	test/compat-test.sh
 
 .PHONY: tidy
 tidy:

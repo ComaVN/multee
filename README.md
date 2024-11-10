@@ -5,7 +5,7 @@
 
 ## Purpose
 
-This package implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times,
+This package implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times concurrently,
 without needing to Seek back to the beginning.
 
 ## Usage

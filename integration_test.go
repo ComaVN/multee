@@ -1,4 +1,4 @@
-// Copyright 2023 Roel Harbers.
+// Copyright 2023-2024 Roel Harbers.
 // Use of this source code is governed by the MIT license
 // that can be found in the LICENSE file.
 
@@ -64,7 +64,7 @@ func Test_multee_smoketest(t *testing.T) {
 func Test_multee_monkeytest(t *testing.T) {
 	const (
 		NumberOfSeeds      = 20    // Run the test with this many different, predictable seeds.
-		MinNumberOfReaders = 0     // Use at least this many readers readers.
+		MinNumberOfReaders = 0     // Use at least this many readers.
 		MaxNumberOfReaders = 20    // Use at most this many readers.
 		MinNumberOfReads   = 0     // Do at least this many reads.
 		MaxNumberOfReads   = 20    // Do at most this many reads.

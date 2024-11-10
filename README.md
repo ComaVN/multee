@@ -5,12 +5,27 @@
 
 ## Purpose
 
-This package implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times concurrently,
+This package implements a multiplexer for `io.Reader`, making it possible to read from a single `io.Reader` several times concurrently,
 without needing to Seek back to the beginning.
 
 ## Usage
 
-See the [code examples][examples]
+Create a multee-reader from a single `io.Reader`, and create as many readers as you need:
+```go
+	inputReader := strings.NewReader("Foo")
+	mr := multee.NewMulteeReader(inputReader)
+	r1 := mr.NewReader()
+	r2 := mr.NewReader()
+	r3 := mr.NewReader()
+```
+
+Now, you can use `r1`, `r2` and `r3` as a regular `io.ReadCloser`.
+
+Each reader must be read in its own go-routine, and they must either be read until EOF or `Close()` must be called, or the MulteeReader will block.
+
+The returned readers themselves are *not* concurrency-safe.
+
+See also the [code examples][examples].
 
 ## Testing
 

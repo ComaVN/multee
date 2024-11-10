@@ -1,5 +1,6 @@
 # Multee, an io.Reader multiplexer
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/ComaVN/multee.svg)](https://pkg.go.dev/github.com/ComaVN/multee)
 [![Keep a Changelog v1.1.0 badge][changelog-badge]][changelog]
 
 ## Purpose

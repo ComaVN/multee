@@ -6,9 +6,18 @@ clean:
 lint:
 	golangci-lint run
 
+# TODO: Poor man's automated testing, replace this with some proper CI
 .PHONY: test
-test:
-	test/test.sh
+test: unit-test integration-test
+	@echo "All tests Ok"
+
+.PHONY: unit-test
+unit-test:
+	test/unit-test.sh
+
+.PHONY: integration-test
+integration-test:
+	test/example-test.sh
 
 .PHONY: tidy
 tidy:

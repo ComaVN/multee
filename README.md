@@ -14,7 +14,7 @@ See the [code examples][examples]
 
 ## Testing
 
-Just run poor man's CI, `test/test.sh`.
+Just run poor man's CI, `make test`.
 
 ## Contribute
 

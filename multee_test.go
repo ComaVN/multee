@@ -31,7 +31,7 @@ func Test_multeeReader_read_impossible_offset(t *testing.T) {
 	r := mr.NewReader()
 	defer r.Close()
 	assert.Panics(t, func() {
-		mr.read(make([]byte, 3), 1)
+		_, _, _ = mr.read(make([]byte, 3), 1)
 	})
 }
 

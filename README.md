@@ -10,7 +10,7 @@ without needing to Seek back to the beginning.
 
 ## Usage
 
-See the [code examples](examples)
+See the [code examples][examples]
 
 ## Testing
 
@@ -20,7 +20,10 @@ Just run poor man's CI, `test/test.sh`.
 
 Feel free to contribute, even if it's just to complain! Issues and pull requests are welcome.
 
+See the [contributing instructions][contributing] for help to get started.
 
-[changelog]: ./CHANGELOG.md
+
+[changelog]: /CHANGELOG.md
 [changelog-badge]: https://img.shields.io/badge/changelog-Keep%20a%20Changelog%20v1.1.0-%23E05735
 [examples]: /examples
+[contributing]: /CONTRIBUTING.md

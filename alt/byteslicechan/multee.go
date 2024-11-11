@@ -5,11 +5,13 @@
 // Alternative implementation of the multee package, using channels.
 // Implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times,
 // without needing to Seek back to the beginning.
-package multee
+package byteslicechan
 
 import (
 	"io"
 	"sync"
+
+	"github.com/ComaVN/multee"
 )
 
 const bufferSize = 4096
@@ -120,7 +122,7 @@ func (r *reader) Read(p []byte) (n int, err error) {
 // TODO: at the moment, this method has not been checked for concurrency-safety, particularly with concurrent calls to newReader()
 func (r *reader) Close() error {
 	if r.closed {
-		return ErrClosed
+		return multee.ErrClosed
 	}
 	r.closed = true
 	close(r.closedC)

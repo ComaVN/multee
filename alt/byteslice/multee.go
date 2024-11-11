@@ -5,13 +5,15 @@
 // Alternative implementation of the multee package, using a synchronized byte slice as a buffer.
 // Implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times,
 // without needing to Seek back to the beginning.
-package multee
+package byteslice
 
 import (
 	"fmt"
 	"io"
 	"sync"
 	"sync/atomic"
+
+	"github.com/ComaVN/multee"
 )
 
 const bufferSize = 32 * 1024
@@ -88,7 +90,7 @@ func (r *reader) Read(p []byte) (n int, err error) {
 
 func (r *reader) Close() error {
 	if r.closed {
-		return ErrClosed
+		return multee.ErrClosed
 	}
 	// readerCnt must be decremented before the wait group, because the readerCnt is used to increment the wait group again.
 	r.multeeReader.readerCnt.Add(-1)

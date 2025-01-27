@@ -1,8 +1,8 @@
-// Copyright 2023-2024 Roel Harbers.
+// Copyright 2023-2025 Roel Harbers.
 // Use of this source code is governed by the MIT license
 // that can be found in the LICENSE file.
 
-// Implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times,
+// Package multee implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times,
 // without needing to Seek back to the beginning.
 package multee
 

@@ -1,8 +1,8 @@
-// Copyright 2023-2024 Roel Harbers.
+// Copyright 2023-2025 Roel Harbers.
 // Use of this source code is governed by the MIT license
 // that can be found in the LICENSE file.
 
-// Alternative implementation of the multee package, using channels.
+// Alternative implementation of the package, using channels.
 // Implements a multiplexer for io.Readers, making it possible to read from a single io.Reader several times,
 // without needing to Seek back to the beginning.
 package byteslicechan

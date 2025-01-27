@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2025-01-27
+
+### Fixed
+
+- Better synopses so pkg.go.dev shows the main package instead of some alt implementation (<https://github.com/golang/go/issues/70459#issuecomment-2616512387>).
+
 ## [0.0.3] - 2024-11-12
 
 ### Added
@@ -36,7 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - An alternative implementation, using channels.
 
 
-[unreleased]: https://github.com/ComaVN/multee/compare/v0.0.3...HEAD
+[unreleased]: https://github.com/ComaVN/multee/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/ComaVN/multee/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/ComaVN/multee/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/ComaVN/multee/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/ComaVN/multee/releases/tag/v0.0.1
